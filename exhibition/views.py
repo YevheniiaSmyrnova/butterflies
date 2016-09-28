@@ -8,14 +8,16 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from exhibition.models import Exhibition, Collection
 from sponsors.models import Sponsor
 from exhibition.forms import ExhibitionModelForm
+import logging
+logger = logging.getLogger(__name__)
+
+# Create your views here.
 
 # def test(**kwargs): # {"name": "fff", "short_description": "bla", "description": "asda", "data": timezone.now()}
 # 	for key, value in kwargs.items():
 # 		exhibition = Exhibition.objects.first()
 # 		setattr(exhibition, key, value)
 # 		exhibition.save()
-
-# Create your views here.
 def list_of_exhibition(request):
 	exhibitions = Exhibition.objects.filter(date__gte=timezone.now())
 	return render(request, 'index.html', {'exhibitions': exhibitions})
@@ -30,6 +32,10 @@ class ExhibitionDetailView(DetailView):
 	model = Exhibition
 	def get_context_data(self, **kwargs):
 		context = super(ExhibitionDetailView, self).get_context_data(**kwargs)
+		logger.debug("Exhibitions detail view has been debugged")
+		logger.info("Logger of exhibitions detail view informs you!")
+		logger.warning("Logger of exhibitions detail view warns you!")
+		logger.error("Exhibitions detail view went wrong!")
 		context['collections'] = Collection.objects.filter(exhibition__pk=self.object.pk)
 		context['sponsors'] = Sponsor.objects.filter(sponsor_exhibition__pk=self.object.pk)
 		context['assistants'] = Sponsor.objects.filter(assistant_exhibition__pk=self.object.pk)

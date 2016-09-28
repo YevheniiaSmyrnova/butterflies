@@ -98,3 +98,41 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 
 ADMINS = (('Yevheniia', "ZhenyaSmirnova@ukr.net"), )
+
+LOGGING = {
+    'version': 1,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'loggers':
+    {
+        'exhibition': {
+            'handlers': ['file_exhibition'],
+            'level': 'DEBUG',
+        },
+        'collector': {
+            'handlers': ['file_collector'],
+            'level': 'DEBUG',
+        },
+    },
+    'handlers':
+    {
+        'file_exhibition': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'exhibition_logger.log'),
+            'formatter': 'simple'
+        },
+        'file_collector': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'collector_logger.log'),
+            'formatter': 'verbose'
+        },
+    },
+}
