@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#from datetime import datetime
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
@@ -18,6 +18,7 @@ from collector.forms import CollectorModelForm, CollectionModelForm
 class CollectorListView(ListView):
 	model = Collector
 	context_object_name = 'collectors'
+	paginate_by = 3
 
 	def get_queryset(self):
 		qs = super(CollectorListView, self).get_queryset()

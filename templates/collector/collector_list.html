@@ -45,6 +45,32 @@
           {% endfor %}
         </table>
 
+        <center>
+        <ul class="pagination" align="center">
+          <li>
+            {% if page_obj.has_previous %}
+              <a href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true"><< previous</span></a>
+            {% endif %}
+         </li>
+          {% for page_number in paginator.page_range %}
+            {% if page_number == page_obj.number %}
+              <li class="active">
+                <a href="">{{ page_number }}<span class="sr-only"></span></a>
+              </li>
+            {% else %}
+              <li>
+                <a href="?page={{ page_number }}">{{ page_number }}<span class="sr-only"></span></a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          <li>
+            {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">next >></span></a>
+            {% endif %}
+          </li>
+        </ul>
+        </center>
+
         <p align="justify">
         Наша природа создала бабочек настолько прекрасными насекомыми, что они способны радовать человеческий глаз и после смерти.  Коллекционирование бабочек, или лепидоптерофилия сегодня становится все более и более распространенным хобби. Большинство собирает коллекции этих прекрасных насекомых на стенах, некоторые делают картины из их крыльев, а кто-то предпочитает наслаждаться красотой живых бабочек и разводит их самостоятельно. Это занятие приносит массу удовольствия, благодаря ему человек соприкасается с прекрасным.
         </p>
