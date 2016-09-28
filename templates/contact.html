@@ -14,12 +14,25 @@
     <div class="container">
       <div class="jumbotron">
         <h1><i><b>Our contacts</b></i></h1>
+
+        {% if messages %}
+          <ul class="list-group">
+          {% for message in messages %}
+            <p class="list-group-item list-group-item-success">{{ message }}</p>
+          {% endfor %}
+          </ul>
+        {% endif %}
+
           <ul class="list-group">
             <p class="list-group-item list-group-item-success"><b>Name:</b> Yevheniia Smyrnova</p>
             <p class="list-group-item list-group-item-info"><b>Skype:</b> Zhenya1393</p>
             <p class="list-group-item list-group-item-warning"><b>Email:</b> ZhenyaSmirnova@ukr.net</p>
             <p class="list-group-item list-group-item-danger"><b>Phone:</b> 099-404-5148</p>
           </ul>
+
+        <p align="right"><a class="btn btn-primary btn-sm" href="{% url 'feedback:new_message' %}" role="button">
+        <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Отправить сообщение администраторам</a></p>
+        
       </div>
     </div>
 {% endblock content %}

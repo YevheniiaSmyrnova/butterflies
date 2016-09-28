@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
@@ -9,25 +9,16 @@ from exhibition.models import Exhibition, Collection
 from sponsors.models import Sponsor
 from exhibition.forms import ExhibitionModelForm
 
+# def test(**kwargs): # {"name": "fff", "short_description": "bla", "description": "asda", "data": timezone.now()}
+# 	for key, value in kwargs.items():
+# 		exhibition = Exhibition.objects.first()
+# 		setattr(exhibition, key, value)
+# 		exhibition.save()
+
 # Create your views here.
 def list_of_exhibition(request):
-	exhibitions = []
-	exhibitions1 = Exhibition.objects.all()#filter(date=datetime.now())
-	for exhibition in exhibitions1:
-		if exhibition.date.year > datetime.now().year:
-			exhibitions.append(exhibition)
-		if exhibition.date.month > datetime.now().month and exhibition.date.year == datetime.now().year:
-			exhibitions.append(exhibition)
-		if exhibition.date.day > datetime.now().day and exhibition.date.month == datetime.now().month and exhibition.date.year == datetime.now().year:
-			exhibitions.append(exhibition)
-		if exhibition.date.hour > datetime.now().hour and exhibition.date.day == datetime.now().day and exhibition.date.month == datetime.now().month and exhibition.date.year == datetime.now().year:
-			exhibitions.append(exhibition)
-		if exhibition.date.minute > datetime.now().minute and exhibition.date.hour == datetime.now().hour and exhibition.date.day == datetime.now().day and exhibition.date.month == datetime.now().month and exhibition.date.year == datetime.now().year:
-			exhibitions.append(exhibition)
-		if exhibition.date.second > datetime.now().second and exhibition.date.minute == datetime.now().minute and exhibition.date.hour == datetime.now().hour and exhibition.date.day == datetime.now().day and exhibition.date.month == datetime.now().month and exhibition.date.year == datetime.now().year:
-			exhibitions.append(exhibition)
+	exhibitions = Exhibition.objects.filter(date__gte=timezone.now())
 	return render(request, 'index.html', {'exhibitions': exhibitions})
-
 
 '''def detail(request, pk):
 	exhibition = Exhibition.objects.get(id=pk)
@@ -84,11 +75,11 @@ class ExhibitionCreateView(CreateView):
 class ExhibitionUpdateView(UpdateView):
 	model = Exhibition
 	def get_success_url(self):
-		return reverse_lazy('exhibition:edit', kwargs={'pk':self.object.pk})
+		return reverse_lazy('exhibition:detail', kwargs={'pk':self.object.pk})
 
 	def get_context_data(self, **kwargs):
 		context = super(ExhibitionUpdateView, self).get_context_data(**kwargs)
-		context['page_title'] = u'Редоктирование данных о выставке'
+		context['page_title'] = u'Редактирование данных о выставке'
 		return context
 
 	def form_valid(self, form):
@@ -109,8 +100,8 @@ class ExhibitionDeleteView(DeleteView):
 	model = Exhibition
 	success_url = reverse_lazy('index')
 
-	def get_context_data(self, **kwargs):
-		context = super(ExhibitionDeleteView, self).get_context_data(**kwargs)
+	def delete(self, request, *args, **kwargs):
+		ret_msg = super(ExhibitionDeleteView, self).delete(request, *args, **kwargs)
 		mes = u'Высавка {} была удалена.'.format(self.object.name)
 		messages.success(self.request, mes)
-		return context
+		return ret_msg

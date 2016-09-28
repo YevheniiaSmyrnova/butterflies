@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{collector.surname}}</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><b>Бабочки</b></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'collector:list' %}">Коллекционеры</a></li>
+            <li><a href="{% url 'polls:index' %}">Опрос</a></li>
+            <li><a href="{% url 'contact' %}">Контакты</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i><b>{{ collector.surname }} {{ collector.name }}</b></i></h1>
+        
+        <h3><b>Основная информация:</b></h3>
+        <table class="table" border=0>
+          <tbody>
+            <tr>
+              <td>День Рождения:</td>
+              <td>{{ collector.date_of_birth }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3><b>Контактная информация:</b></h3>
+        <table class="table" border=0>
+          <tbody>
+            <tr>
+              <td>Моб. телефон:</td>
+              <td>{{ collector.phone }}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Email:</td>
+              <td>{{ collector.email }}</td>
+            </tr>
+          </tbody>
+          {% if collector.skype %}
+          <tbody>
+            <tr>
+              <td>Skype:</td>
+              <td>{{ collector.skype }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% if collector.address %}
+          <tbody>
+            <tr>
+              <td>Адрес:</td>
+              <td>{{ collector.address }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+        </table>
+        <h3><b>Коллекции:</b></h3>
+      </div>
+    </div>
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>

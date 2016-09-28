@@ -104,11 +104,11 @@ class CollectorDeleteView(DeleteView):
 	model = Collector
 	success_url = reverse_lazy('collector:list')
 
-	def get_context_data(self, **kwargs):
-		context = super(CollectorDeleteView, self).get_context_data(**kwargs)
+	def delete(self, request, *args, **kwargs):
+		ret_msg = super(CollectorDeleteView, self).delete(request, *args, **kwargs)
 		mes = u'Коллекционер {} {} был успешно удален.'.format(self.object.name, self.object.surname)
 		messages.success(self.request, mes)
-		return context
+		return ret_msg
 
 def add_collection(request, pk):
 	collector = Collector.objects.get(id=pk)

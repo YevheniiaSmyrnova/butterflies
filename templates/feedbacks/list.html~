@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Коллекционеры</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="404"><b>Бабочки</b></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li class="active"><a href="{% url 'collector:list' %}">Коллекционеры<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'polls:index' %}">Опросы</a></li>
+            <li><a href="{% url 'contact' %}">Контакты</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i><b>Коллекционеры</b></i></h1>
+        <table class="table" border=0>
+          <thead>
+            <tr>
+              <th>ФИО</th>
+              <th>Телефон</th>
+              <th>Коллекции</th>
+            </tr>
+          </thead>
+          {%for collector  in collectors %}
+          <tbody>
+            <tr>
+              <td><a href="{% url 'collector:detail' collector.id %}">{{ collector.surname }} {{ collector.name }}</a></td>
+              <td>{{ collector.phone }}</td>
+              <td>*******</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+        <p>
+        Наша природа создала бабочек настолько прекрасными насекомыми, что они способны радовать человеческий глаз и после смерти.  Коллекционирование бабочек, или лепидоптерофилия сегодня становится все более и более распространенным хобби. Большинство собирает коллекции этих прекрасных насекомых на стенах, некоторые делают картины из их крыльев, а кто-то предпочитает наслаждаться красотой живых бабочек и разводит их самостоятельно. Это занятие приносит массу удовольствия, благодаря ему человек соприкасается с прекрасным.
+        </p>
+      </div>
+    </div>
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>

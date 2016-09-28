@@ -25,6 +25,7 @@
           {% csrf_token %}
           {{ form.as_p }}
           <input class="btn btn-primary" type="submit" value="Сохранить" />
+          <a class="btn btn-default" href="{% url 'index' %}" role="button">Отменить</a>
         </form>
       </div>
     </div>
