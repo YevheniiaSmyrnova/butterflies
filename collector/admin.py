@@ -11,7 +11,7 @@ class CollectionInline(admin.TabularInline):
 
 class CollectorAdmin(admin.ModelAdmin):
 	fieldsets = [
-		(u'Основная информация',   {'fields': ['name', 'surname', 'date_of_birth']}),
+		(u'Основная информация',   {'fields': ['name', 'surname', 'date_of_birth', 'photo']}),
 		(u'Контактная информация', {'fields': ['email', 'phone', 'address', 'skype']}),
 	]
 	inlines = [CollectionInline]

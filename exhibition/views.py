@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
+from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from exhibition.models import Exhibition, Collection
@@ -18,10 +19,18 @@ logger = logging.getLogger(__name__)
 # 		exhibition = Exhibition.objects.first()
 # 		setattr(exhibition, key, value)
 # 		exhibition.save()
-def list_of_exhibition(request):
+'''def list_of_exhibition(request):
 	exhibitions = Exhibition.objects.filter(date__gte=timezone.now())
-	return render(request, 'index.html', {'exhibitions': exhibitions})
+	return render(request, 'index.html', {'exhibitions': exhibitions})'''
+class ExhibitionListView(ListView):
+	model = Exhibition
+	context_object_name = 'exhibitions'
+	#template_name = 'index.html'
 
+	def get_queryset(self):
+		qs = super(ExhibitionListView, self).get_queryset()
+		qs = qs.filter(date__gte=timezone.now())
+		return qs
 '''def detail(request, pk):
 	exhibition = Exhibition.objects.get(id=pk)
 	collections = Collection.objects.filter(exhibition__pk=pk)

@@ -1,10 +1,10 @@
 {% extends 'collector/base.html' %}
 
 
-{% block title %}{{ collector.surname }} {{ collector.name }}{% endblock%}
-
-
 {% load staticfiles %}
+
+
+{% block title %}{{ collector.surname }} {{ collector.name }}{% endblock%}
 
 
 {% block content %}
@@ -25,48 +25,34 @@
         <a class="btn btn-primary btn-sm" href="{% url 'collector:delete' collector.id %}" role="button">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Удалить</a></p>
 
-        <h2><b>Основная информация:</b></h2>
-        <table class="table" border=0>
-          <tbody>
-            <tr>
-              <td>День Рождения:</td>
-              <td>{{ collector.date_of_birth }}</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <h2><b>Контактная информация:</b></h2>
-        <table class="table" border=0>
-          <tbody>
-            <tr>
-              <td>Моб. телефон:</td>
-              <td>{{ collector.phone }}</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <td>Email:</td>
-              <td>{{ collector.email }}</td>
-            </tr>
-          </tbody>
-          {% if collector.skype %}
-          <tbody>
-            <tr>
-              <td>Skype:</td>
-              <td>{{ collector.skype }}</td>
-            </tr>
-          </tbody>
-          {% endif %}
-          {% if collector.address %}
-          <tbody>
-            <tr>
-              <td>Адрес:</td>
-              <td>{{ collector.address }}</td>
-            </tr>
-          </tbody>
-          {% endif %}
-        </table>
-
+        <div class="well well-large">
+          <div class="media">
+            <div class="media-left">
+            {% if collector.photo %}
+              <img class="media-object" src="{{ collector.photo }}" width="200" alt="...">
+            {% else %}
+              *_*<img class="media-object" src="../static/images/user_photo_2.jpg" width="200" alt="...">
+            {% endif %}
+            </div>
+            <div class="media-body">
+              <h2><b>Основная информация:</b></h2>
+              <ul class="list-group">
+                <p class="list-group-item"><b>День Рождения:</b> {{ collector.date_of_birth }}</p>
+              </ul>
+              <h2><b>Контактная информация:</b></h2>
+              <ul class="list-group">
+                <p class="list-group-item"><b>Моб. телефон:</b> {{ collector.phone }}</p>
+                <p class="list-group-item"><b>Email:</b> {{ collector.email }}</p>
+                {% if collector.skype %}
+                  <p class="list-group-item"><b>Skype:</b> {{ collector.skype }}</p>
+                {% endif %}
+                {% if collector.address %}
+                  <p class="list-group-item"><b>Адрес:</b> {{ collector.address }}</p>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
         {% if collections %}
           <h2><b>Kоллекции:</b></h2>
           {% for collection in collections %}

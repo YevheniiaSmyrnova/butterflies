@@ -19,7 +19,7 @@
         <form method="post" align="right">
           {% csrf_token %}
           <input class="btn btn-primary" type="submit" value="Удалить" />
-          <a class="btn btn-default" href="{% url 'index' %}" role="button">Отменить</a>
+          <a class="btn btn-default" href="{% url 'exhibition:list' %}" role="button">Отменить</a>
         </form>
         
       </div>

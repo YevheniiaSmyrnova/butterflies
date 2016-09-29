@@ -1,0 +1,32 @@
+{% extends 'exhibition/base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i><b>Расписание выставок.</b></i></h1>
+        {% if messages %}
+          <ul class="list-group">
+          {% for message in messages %}
+            <p class="list-group-item list-group-item-success">{{ message }}</p>
+          {% endfor %}
+          </ul>
+        {% endif %}
+        <a class="btn btn-primary btn-sm" href="{% url 'exhibition:create' %}" role="button">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить новую выставку</a>
+        {% if exhibitions %}
+          {% for exhibition  in exhibitions %}
+            <h3><i><b><a href="{% url 'exhibition:detail' exhibition.id %}">{{ exhibition.name }}</a></b></i></h3>
+            <p>{{ exhibition.date }}</p>
+            <p>{{ exhibition.short_description }}</p>
+            <hr>
+          {% endfor %}
+        {% else %}
+          <p>В ближайшее время, выставки не планируются</p>
+        {% endif %}
+      </div>
+    </div>
+{% endblock content %}

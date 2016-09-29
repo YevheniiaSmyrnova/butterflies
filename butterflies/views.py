@@ -2,13 +2,17 @@ from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.views.generic import TemplateView
 
 
-def contact(request):
-	return render(request, 'contact.html')
+class NewsView(TemplateView):
+	template_name = 'news.html'
 
-def news(request):
-	return render(request, 'news.html')
+class IndexView(TemplateView):
+	template_name = 'index.html'
+
+class ContactView(TemplateView):
+	template_name = 'contact.html'
 
 def morpho_rhetenor(request):
 	return render(request, 'morpho_rhetenor.html')

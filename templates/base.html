@@ -25,7 +25,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="{% block nav_class_index %}{% endblock%}">
-            <a href="{% url 'index' %}">Главная<span class="sr-only">(current)</span></a></li>
+            <a href="{% url 'index' %}">Главная</a></li>
+            <li class="{% block nav_class_exhibition %}{% endblock%}">
+            <a href="{% url 'exhibition:list' %}">Выставки</a></li>
             <li class="{% block nav_class_collector %}{% endblock%}">
             <a href="{% url 'collector:list' %}">Коллекционеры</a></li>
             <li class="{% block nav_class_polls %}{% endblock%}">
