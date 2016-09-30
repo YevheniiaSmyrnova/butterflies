@@ -81,11 +81,11 @@ class CollectorCreateView(CreateView):
 			messages.success(request, mes)
 	else:
 		form = CollectorModelForm(instance=application)
-	return render(request, 'collector/edit.html', {'form':form})'''
+	return render(request, 'collector/detail.html', {'form':form})'''
 class CollectorUpdateView(UpdateView):
 	model = Collector
 	def get_success_url(self):
-		return reverse_lazy('collector:edit', kwargs={'pk':self.object.pk})
+		return reverse_lazy('collector:detail', kwargs={'pk':self.object.pk})
 
 	def get_context_data(self, **kwargs):
 		context = super(CollectorUpdateView, self).get_context_data(**kwargs)

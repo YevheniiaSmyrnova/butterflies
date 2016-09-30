@@ -14,6 +14,7 @@
         <h1 align="center"><i><b>{{ exhibition.name }}</b></i></h1>
         
         {% if messages %}
+        <p>fghjkl</p>
           <ul class="list-group">
           {% for message in messages %}
             <p class="list-group-item list-group-item-success">
@@ -22,8 +23,10 @@
           </ul>
         {% endif %}
 
-        <p align="justify">Уважаемые жидели города Харьков и гости нашего города,
-Мы рады пригласить Вас на выставку "{{ exhibition.name }}", которая состоится {{ exhibition.date.day }}.{{ exhibition.date.month }}.{{ exhibition.date.year }} в стенах нашего заведения.</p>
+        <p align="justify">Уважаемые жидели города Харькова и гости нашего города,
+        мы рады пригласить Вас на выставку "{{ exhibition.name }}", которая состоится 
+        {{ exhibition.date.day }}.{{ exhibition.date.month }}.{{ exhibition.date.year }}г. 
+        в стенах нашего заведения.</p>
         
         <p align="justify">{{ exhibition.short_description }}</p>
 

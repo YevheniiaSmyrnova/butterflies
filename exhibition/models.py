@@ -17,7 +17,7 @@ class Collection(models.Model):
 	
 
 class Exhibition(models.Model):
-	name = models.CharField(u'Назвние выставки', max_length=55)
+	name = models.CharField(u'Название выставки', max_length=55)
 	date = models.DateTimeField(u'Дата и время проведения')
 	short_description = models.CharField(u'Краткое описание', max_length=255)
 	description = models.TextField(u'Описание', null=True, blank=True)
