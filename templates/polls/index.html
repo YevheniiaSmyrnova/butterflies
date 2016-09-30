@@ -8,14 +8,17 @@
     <div class="container">
       <div class="jumbotron">
         {% if latest_question_list %}
-   		  <ul>
+        <h1 align="center"><b><i>Опрос мнения</i></b></h1>
+   		  <ul class="list-group">
    		    {% for question in latest_question_list %}
-            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-            {% endfor %}
-          </ul>
+            <li class="list-group-item"><a href="{% url 'polls:detail' question.id %}"><b>{{ question.question_text }}</b></a></li>
+          {% endfor %}
+        </ul>
         {% else %}
-          <p>Опросы не доступны.</p>
+          <p align="center"><b>Опросы не доступны.</b></p>
         {% endif %}
+
+        <p align="justify">С бабочками мы часто встречаемся в природе и даже дома. Где бы мы ни были - в лесу, саду, на полях и лугах, они привлекают наше внимание с ранней весны до глубокой осени.</p>
       </div>
     </div>
 {% endblock content %}

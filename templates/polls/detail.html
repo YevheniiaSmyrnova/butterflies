@@ -7,7 +7,7 @@
 {% block content %}
     <div class="container">
       <div class="jumbotron">
-        <h1>{{ question.question_text }}</h1>
+        <h1 align="center">{{ question.question_text }}</h1>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         <form action="{% url 'polls:vote' question.id %}" method="post">
           {% csrf_token %}
@@ -15,7 +15,7 @@
             <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
             <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
           {% endfor %}
-          <input type="submit" value="Vote" />
+          <input class="btn btn-primary" type="submit" value="Голосовать" />
         </form>
       </div>
     </div>

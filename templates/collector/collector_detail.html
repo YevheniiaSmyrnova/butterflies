@@ -28,9 +28,9 @@
         <div class="well well-large">
           <div class="media">
             <div class="media-left">
-            {% if collector.photo %}222
-            <a href="{% media 'photos/{{collector.photo}}' %}">
-              <img class="media-object" src="{% media {{collector.photo}} %}" width="200" alt="...">
+            {% if collector.photo %}
+            <a href="{% static 'photos/collector.photo' %}">
+              <img class="page_avatar_img" src="{% static 'photos/collector.photo' %}" width="200" alt="...">
             </a>
             {% else %}
               <a href="{% static 'images/user_photo_2.jpg' %}">

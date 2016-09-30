@@ -7,13 +7,13 @@
 {% block content %}
     <div class="container">
       <div class="jumbotron">
-        <h1>{{ question.question_text }}</h1>
-        <ul>
+        <h1 align="center">{{ question.question_text }}</h1>
+        <ul class="list-group">
           {% for choice in question.choice_set.all %}
-            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+            <li class="list-group-item"><b>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</b></li>
           {% endfor %}
         </ul>
-        <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+        <a href="{% url 'polls:index' %}">Голосовать еще раз?</a>
       </div>
     </div>
 {% endblock content %}
