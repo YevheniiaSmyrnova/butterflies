@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}Бабочки в стихах и загадках{% endblock%}
+
+
+{% block nav_class_poems %}active{% endblock%}
+
+
+
+{% block content_text %}
+	<h1 align="center"><i><b>Бабочки в стихах и загадках.</b></i></h1>
+	<table border="0" width="100%">
+    <tr valign="top">
+      <td width="50%" colspan="2">
+      	<p align="justify">Шевелились у цветка все четыре лепестка.<br />
+      	Я сорвать его хотел, он вспорхнул и улетел.</p>
+      	<p align="center">***</p>
+      	<p align="justify">В ярком платье модница, погулять охотница.<br />
+      	От цветка к цветку летает, утомится — отдыхает.</p>
+      	<p align="center">***</p>
+      	<p align="justify">Не птичка, а с крыльями:<br />
+      	Над цветами летает,<br />
+      	Нектар собирает.</p>
+      	<p align="center">***</p>
+      </td>
+            
+      <td width="50%">
+      	<center>
+      	<a href="{% static 'images/poems_1.gif' %}">
+          <img class="media-object" src="{% static 'images/poems_1.gif' %}" width="300" alt="...">
+        </a>
+        </center>
+      	</div>
+      </td>
+    </tr>
+
+    <tr valign="top">
+    	<td width="50%">
+    		<center>
+      	<a href="{% static 'images/poems_2.jpg' %}">
+          <img class="media-object" src="{% static 'images/poems_2.jpg' %}" width="300" alt="...">
+        </a>
+        </center>
+      	</div>
+      </td>
+
+      <td width="50%" colspan="2">
+      	<p align="justify">Из тени в свет перелетая,<br /> 
+      	Она сама и тень и свет,<br />
+      	Где родилась она такая,<br />
+      	Почти лишённая примет?<br />
+      	Она летает, приседая,<br />
+      	Она, должно быть, из Китая,<br />
+      	Здесь на неё похожих нет,<br />
+      	Она из тех забытых лет,<br />
+      	Где капля малая лазори<br />
+      	Как море синее во взоре.<br />
+      	<i>Арсений Тарковский</i></p>
+      </td>
+    </tr>
+
+    <tr valign="top">
+    	<td width="50%">
+    		<p align="center">***</p>
+    		<p align="justify">Ты прав - одним воздушным очертаньем<br />
+      	Я так мила.<br />
+      	Весь бархат мой с его живым миганьем -<br />
+      	Лишь два крыла.<br />
+      	Не спрашивай: откуда появилась ?<br />
+      	Куда спешу ?<br />
+      	Здесь на цветок я лёгкий опустилась,<br />
+      	И вот - дышу.<br />
+      	<i>Афанасий Фет</i></p>
+      </td>
+
+      <td width="50%" colspan="2">
+      	<center>
+      	<a href="{% static 'images/poems_3.jpg' %}">
+          <img class="media-object" src="{% static 'images/poems_3.jpg' %}" width="300" alt="...">
+        </a>
+        </center>
+      	</div>
+      </td>
+    </tr>
+
+    <tr valign="top">
+    	<td width="50%">
+      	<center>
+      	<a href="{% static 'images/poems_4.gif' %}">
+          <img class="media-object" src="{% static 'images/poems_4.gif' %}" width="300" alt="...">
+        </a>
+        </center>
+      	</div>
+      </td>
+
+      <td width="50%" colspan="2">
+      	<p align="center">***</p>
+      	<p align="justify">На цветке живет,<br />
+      	Пьет цветочный сок.</p>
+      	<p align="center">***</p>
+      	<p align="justify">То взлетит, то крылья сложит,<br />
+      	То расправит их... Похожа<br />
+      	На порхающий цветок<br />
+      	В летний солнечный денёк.</p>
+      </td>
+  </table>
+{% endblock content_text %}

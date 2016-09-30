@@ -19,27 +19,51 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand"  href="{% url 'news' %}"><b>Бабочки</b></a>
+          <a class="navbar-brand"  href="{% url 'index' %}"><b>Главная</b></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="{% block nav_class_index %}{% endblock%}">
-            <a href="{% url 'index' %}">Главная</a></li>
-            <li class="{% block nav_class_exhibition %}{% endblock%}">
+            <li class="{% block nav_class_exhibition %}{% endblock %}">
             <a href="{% url 'exhibition:list' %}">Выставки</a></li>
-            <li class="{% block nav_class_collector %}{% endblock%}">
+            <li class="{% block nav_class_collector %}{% endblock %}">
             <a href="{% url 'collector:list' %}">Коллекционеры</a></li>
-            <li class="{% block nav_class_polls %}{% endblock%}">
+            <li class="{% block nav_class_polls %}{% endblock %}">
             <a href="{% url 'polls:index' %}">Опрос</a></li>
-            <li class="{% block nav_class_contact %}{% endblock%}">
+            <li class="{% block nav_class_contact %}{% endblock %}">
             <a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
-    {% block content %}{% endblock content %}
+    {% block content %}
+    <div class="container">
+      <div class="jumbotron">
+      <table border="0" width="100%">
+          <tr valign="top">
+            <td width="20%" colspan="2">
+              <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="{% block nav_class_index %}{% endblock %}">
+                <a href="{% url 'index' %}"><b>Коллекционирование</b></a></li>
+                <li role="presentation" class="{% block nav_class_facts %}{% endblock %}">
+                <a href="{% url 'facts' %}"><b>Интересные факты</b></a></li>
+                <li role="presentation" class="{% block nav_class_poems %}{% endblock %}">
+                <a href="{% url 'poems' %}"><b>Бабочки в стихах и загадках</b></a></li>
+              </ul>
+            </td>
+
+            <td width="5%"></td>
+            
+            <td width="75%">
+            {% block content_text %}
+            {% endblock content_text %}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    {% endblock content %}
 
     <script src="../static/js/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>

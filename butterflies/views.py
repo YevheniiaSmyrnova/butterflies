@@ -5,11 +5,14 @@ from django.views import generic
 from django.views.generic import TemplateView
 
 
-class NewsView(TemplateView):
-	template_name = 'news.html'
-
 class IndexView(TemplateView):
 	template_name = 'index.html'
+	
+class FactsView(TemplateView):
+	template_name = 'facts.html'
+
+class PoemsView(TemplateView):
+	template_name = 'poems.html'
 
 class ContactView(TemplateView):
 	template_name = 'contact.html'
