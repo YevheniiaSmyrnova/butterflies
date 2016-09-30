@@ -25,11 +25,31 @@ logger = logging.getLogger(__name__)
 class ExhibitionListView(ListView):
 	model = Exhibition
 	context_object_name = 'exhibitions'
-	#template_name = 'index.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(ExhibitionListView, self).get_context_data(**kwargs)
+		context['now'] = 'active'
+		context['title'] = 'Расписание выставок.'
+		return context
 
 	def get_queryset(self):
 		qs = super(ExhibitionListView, self).get_queryset()
 		qs = qs.filter(date__gte=timezone.now())
+		return qs
+
+class ExhibitionPastListView(ListView):
+	model = Exhibition
+	context_object_name = 'exhibitions'
+
+	def get_context_data(self, **kwargs):
+		context = super(ExhibitionPastListView, self).get_context_data(**kwargs)
+		context['past'] = 'active'
+		context['title'] = 'Выставки, которые прошли.'
+		return context
+
+	def get_queryset(self):
+		qs = super(ExhibitionPastListView, self).get_queryset()
+		qs = qs.filter(date__lt=timezone.now())
 		return qs
 '''def detail(request, pk):
 	exhibition = Exhibition.objects.get(id=pk)

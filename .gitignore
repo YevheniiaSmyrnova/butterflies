@@ -1,4 +1,5 @@
 # python precompiled files:
+*.py~
 *.pyc
 *.pyo
 *.log

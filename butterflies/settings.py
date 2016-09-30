@@ -86,9 +86,21 @@ USE_TZ = True
 
 
 # Media files
-#MEDIA_ROOT = '/home/projects/buterflies/media/'
-MEDIA_URL = '/media/'
-MEDIAFILES_DIRS = (os.path.join(BASE_DIR, 'media'), )
+#MEDIA_ROOT = (os.path.join(BASE_DIR, 'media'), )
+#MEDIA_URL = '/media/'
+#MEDIAFILES_DIRS = (os.path.join(BASE_DIR, 'media'), )
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.media',
+)
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/var/www/example.com/media/"
+MEDIA_ROOT = 'media/'
+ 
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash.
+# Examples: "http://example.com/media/", "http://media.example.com/"
+MEDIA_URL = 'http://127.0.0.1:8000/media/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

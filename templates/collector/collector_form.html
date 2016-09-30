@@ -21,7 +21,11 @@
           </ul>
         {% endif %}
 
-        <form class="form-horizontal" method="post">
+        {% if form.is_multipart %}
+          <form enctype="multipart/form-data" method="post">
+        {% else %}
+          <form method="post" action="/foo/">
+        {% endif %}
           {% csrf_token %}
           <fieldset>
           {{ form.as_p }}
