@@ -1,46 +1,50 @@
 # -*- coding: utf-8 -*-
-#from django.shortcuts import get_object_or_404, render
-#from django.http import HttpResponseRedirect
-#from django.core.urlresolvers import reverse
-#from django.views import generic
-#from quadratic.forms import QuadraticForm
-#from django.contrib import messages
+# TODO doc string
+# TODO don't keep unnecessary comments
+# from django.shortcuts import get_object_or_404, render
+# from django.http import HttpResponseRedirect
+# from django.core.urlresolvers import reverse
+# from django.views import generic
+# from quadratic.forms import QuadraticForm
+# from django.contrib import messages
 from django.shortcuts import render
+
 from quadratic.forms import QuadraticForm
 
-# Create your views here.
+
 def quadratic_results(request):
-	result = {}
-	message = None
-	discr = None
-	if request.GET:
-		form = QuadraticForm(request.GET)
-		if form.is_valid():
-			a = form.cleaned_data['a']
-			b = form.cleaned_data['b']
-			c = form.cleaned_data['c']
-			
-			discr = b*b - 4*a*c
-			if discr < 0:
-				message = "Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений."
-			elif discr == 0:
-				x = round((-b + discr**(1/2.0)) / 2*a, 1)
-				message = "Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {}".format(x)
-			else:
-				x1 = round((-b + discr**(1/2.0)) / 2*a, 1)
-				x2 = round((-b - discr**(1/2.0)) / 2*a, 1)
-				message = "Квадратное уравнение имеет два действительных корня: x1 = {}, x2 = {}".format(x1,x2)
-			
-			result['d'] = 'Дискриминант: {}'.format(discr)
-			result['message'] = message
-			
-	else:
-		form = QuadraticForm()
-	result['form'] = form
-	return render(request, 'quadratic/results.html', result)
+    # TODO doc string
+    result = {}
+    if request.GET:
+        form = QuadraticForm(request.GET)
+        if form.is_valid():
+            a = form.cleaned_data['a']
+            b = form.cleaned_data['b']
+            c = form.cleaned_data['c']
 
+            discr = b * b - 4 * a * c
+            # TODO clear to long strings
+            if discr < 0:
+                message = "Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений."
+            elif discr == 0:
+                x = round((-b + discr ** (1 / 2.0)) / 2 * a, 1)
+                message = "Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {}".format(
+                    x)
+            else:
+                x1 = round((-b + discr ** (1 / 2.0)) / 2 * a, 1)
+                x2 = round((-b - discr ** (1 / 2.0)) / 2 * a, 1)
+                message = "Квадратное уравнение имеет два действительных корня: x1 = {}, x2 = {}".format(
+                    x1, x2)
 
+            result['d'] = 'Дискриминант: {}'.format(discr)
+            result['message'] = message
 
+    else:
+        form = QuadraticForm()
+    result['form'] = form
+    return render(request, 'quadratic/results.html', result)
+
+# TODO don't keep unnecessary comments
 '''def quadratic_results(request, a, b, c):
 	form = QuadraticForm()
 	#if request.method =='POST':

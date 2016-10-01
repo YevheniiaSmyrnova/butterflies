@@ -5,7 +5,6 @@ Collector models module
 from django.db import models
 
 
-# Create your models here.
 class Collector(models.Model):
     """
     Collector main model
@@ -21,4 +20,6 @@ class Collector(models.Model):
     skype = models.CharField('Skype', max_length=55, null=True, blank=True)
 
     def __unicode__(self):
+        # TODO doc string
+        # TODO remake to format
         return self.name + ' ' + self.surname

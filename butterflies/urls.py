@@ -1,11 +1,13 @@
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
+# TODO doc string
 from django.conf import settings
+from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
+from django.contrib import admin
 
 from butterflies.views import IndexView, FactsView, PoemsView, ContactView
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^facts/$', FactsView.as_view(), name='facts'),
     url(r'^poems/$', PoemsView.as_view(), name='poems'),

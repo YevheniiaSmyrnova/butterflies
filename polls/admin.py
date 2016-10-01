@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
+# TODO doc string
 from django.contrib import admin
+
 from polls.models import Choice, Question
 
 
 class ChoiceInline(admin.TabularInline):
+    # TODO doc string
     model = Choice
     extra = 3
 
 
 class QuestionAdmin(admin.ModelAdmin):
+    # TODO doc string
     fieldsets = [
         (None,               {'fields': ['question_text']}),
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),

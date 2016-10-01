@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
+# TODO doc string
 from django import forms
+
 from exhibition.models import Exhibition
 
-# Create your views here.
+
 class ExhibitionModelForm(forms.ModelForm):
-	class Meta:
-		model = Exhibition
+    # TODO doc string
+    class Meta:
+        # TODO doc string
+        model = Exhibition

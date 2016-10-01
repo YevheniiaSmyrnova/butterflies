@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.test import TestCase
-from exhibition.models import Exhibition, Collection
-from collector.models import Collector
-from sponsors.models import Sponsor
 from django.contrib.auth.models import User
 from django.test import Client
+from django.test import TestCase
 from django.utils import timezone
+
+from collector.models import Collector
+from exhibition.models import Exhibition, Collection
+from sponsors.models import Sponsor
+
 
 # Create your tests here.
 def insert_exhibitions():

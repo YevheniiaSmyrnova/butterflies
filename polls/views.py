@@ -1,30 +1,39 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
+# TODO doc string
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
 from django.views import generic
+
 from polls.models import Choice, Question
 
 
 class IndexView(generic.ListView):
+    # TODO doc string
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """Return the last five published questions."""
+        """
+        Return the last five published questions
+        """
         return Question.objects.order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
+    # TODO doc string
     model = Question
     template_name = 'polls/detail.html'
 
 
 class ResultsView(generic.DetailView):
+    # TODO doc string
     model = Question
     template_name = 'polls/results.html'
 
+
 def vote(request, question_id):
+    # TODO doc string
     p = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
