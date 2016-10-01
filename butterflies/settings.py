@@ -24,8 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -36,6 +35,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+)
+
+THIRD_PARTY_APPS = ()
+
+PROJECT_APPS = (
     'list_of_butterflies',
     'polls',
     'quadratic',
@@ -44,6 +48,8 @@ INSTALLED_APPS = (
     'sponsors',
     'feedbacks',
 )
+
+INSTALLED_APPS = INSTALLED_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -86,21 +92,19 @@ USE_TZ = True
 
 
 # Media files
-#MEDIA_ROOT = (os.path.join(BASE_DIR, 'media'), )
-#MEDIA_URL = '/media/'
-#MEDIAFILES_DIRS = (os.path.join(BASE_DIR, 'media'), )
-#TEMPLATE_CONTEXT_PROCESSORS = (
-#    'django.contrib.auth.context_processors.auth',
-#    'django.core.context_processors.media',
-#)
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/var/www/example.com/media/"
-#MEDIA_ROOT = 'media/'
- 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://example.com/media/", "http://media.example.com/"
-#MEDIA_URL = 'http://127.0.0.1:8000/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -153,3 +157,7 @@ LOGGING = {
         },
     },
 }
+try:
+    from .local_settings import *
+except ImportError:
+    pass

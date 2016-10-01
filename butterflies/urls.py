@@ -1,9 +1,9 @@
-from django.conf.urls import patterns, include, url, handler404
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from butterflies.views import IndexView, FactsView, PoemsView, ContactView
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.conf import settings
+from django.conf.urls.static import static
 
+from butterflies.views import IndexView, FactsView, PoemsView, ContactView
 
 urlpatterns = patterns('',
     url(r'^$', IndexView.as_view(), name='index'),
@@ -17,6 +17,4 @@ urlpatterns = patterns('',
     url(r'^sponsor/', include('sponsors.urls', namespace="sponsor")),
     url(r'^quadratic/', include('quadratic.urls', namespace="quadratic")),
     url(r'^admin/', include(admin.site.urls)),
-)
-
-
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -3,3 +3,7 @@
 *.pyc
 *.pyo
 *.log
+db.sqlite3
+butterflies/local_settings.py
+media
+.idea
