@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Feedbacks views module
+'''
 from django.contrib import messages
 from django.core.mail import mail_admins
 from django.core.urlresolvers import reverse_lazy
@@ -9,12 +11,18 @@ from feedbacks.models import Feedback
 
 
 class FeedbackCreateView(CreateView):
-    # TODO doc string
+    '''
+    Add new message
+    '''
     model = Feedback
     success_url = reverse_lazy('contact')
 
     def form_valid(self, form):
-        # TODO doc string
+        '''
+        Send message
+        :param form:
+        :return: message
+        '''
         data = form.cleaned_data
         mail_admins(data['subject'], data['message'], fail_silently=False,
                     connection=None,

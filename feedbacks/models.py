@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Feedbacks models module
+'''
 from datetime import datetime
 
 from django.db import models
 
 
 class Feedback(models.Model):
-    # TODO doc string
+    '''
+    Feedback model
+    '''
     name = models.CharField(u'Имя отправителя', max_length=55)
     subject = models.CharField(u'Тема сообщения', max_length=55)
     message = models.TextField(u'Текст сообщения')
@@ -15,5 +19,8 @@ class Feedback(models.Model):
                                    default=datetime.now())
 
     def __unicode__(self):
-        # TODO doc string
+        '''
+        Message subject
+        :return: message subject
+        '''
         return self.subject

@@ -1,27 +1,34 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Exhibiton models module
+'''
 from django.db import models
 
 from collector.models import Collector
 from sponsors.models import Sponsor
 
 
-# Create your models here.
-
 class Collection(models.Model):
-    # TODO doc string
+    '''
+    Collection model
+    '''
     name = models.CharField(u'Название коллекции', max_length=55)
     description = models.TextField(u'Описание', null=True, blank=True)
     collector = models.ForeignKey(Collector, verbose_name=u'Коллекционер',
                                   null=True, blank=True)
 
     def __unicode__(self):
-        # TODO doc string
+        '''
+        Collection name
+        :return: collection name
+        '''
         return self.name
 
 
 class Exhibition(models.Model):
-    # TODO doc string
+    '''
+    Exhibition model
+    '''
     name = models.CharField(u'Название выставки', max_length=55)
     date = models.DateTimeField(u'Дата и время проведения')
     short_description = models.CharField(u'Краткое описание', max_length=255)
@@ -35,9 +42,15 @@ class Exhibition(models.Model):
                                   null=True, blank=True)
 
     def __unicode__(self):
-        # TODO doc string
+        '''
+        Exhibition name
+        :return: collection name
+        '''
         return self.name
 
     def collection_name(self):
-        # TODO doc string
+        '''
+        Collection name
+        :return: collection name
+        '''
         return self.collection.name

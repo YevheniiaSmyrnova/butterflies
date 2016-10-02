@@ -1,4 +1,6 @@
-# TODO doc string
+'''
+Feedbacks urls module
+'''
 from django.conf.urls import patterns, url
 
 from feedbacks.views import FeedbackCreateView

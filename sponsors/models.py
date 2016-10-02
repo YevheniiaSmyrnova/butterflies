@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Sponsors models module
+'''
 from django.contrib.auth.models import User
 from django.db import models
 
 
 # Create your models here.
 class Sponsor(models.Model):
-    # TODO doc string
+    '''
+    Sponsor model
+    '''
     user = models.OneToOneField(User, verbose_name=u'Пользователь')
     date_of_birth = models.DateField(u'День Рождения')
     gender = models.CharField(u'Пол',
@@ -18,13 +22,15 @@ class Sponsor(models.Model):
     description = models.TextField(u'Описание')
 
     def __unicode__(self):
-        # TODO doc string
+        '''
+        Sponsor name
+        :return: sponsor name
+        '''
         return self.user.get_username()
 
     def user_full_name(self):
-        # TODO doc string
+        '''
+        Sponsor full name
+        :return: sponsor full name
+        '''
         return self.user.get_full_name()
-
-# TODO don't keep unnecessary comments
-# def user_is_staff(self):
-# return self.user.is_staff

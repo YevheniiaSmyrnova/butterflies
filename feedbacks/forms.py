@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Feedbacks forms module
+'''
 from django import forms
 
 from feedbacks.models import Feedback
@@ -7,7 +9,11 @@ from feedbacks.models import Feedback
 
 # Create your views here.
 class FeedbackModelForm(forms.ModelForm):
-    # TODO doc string
+    '''
+    Feedback form
+    '''
     class Meta:
-        # TODO doc string
+        '''
+        Meta params
+        '''
         model = Feedback

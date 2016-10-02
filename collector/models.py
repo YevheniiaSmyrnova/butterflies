@@ -7,7 +7,7 @@ from django.db import models
 
 class Collector(models.Model):
     """
-    Collector main model
+    Collector model
     """
     name = models.CharField(u'Имя', max_length=55)
     surname = models.CharField(u'Фамилия', max_length=55)
@@ -20,6 +20,10 @@ class Collector(models.Model):
     skype = models.CharField('Skype', max_length=55, null=True, blank=True)
 
     def __unicode__(self):
-        # TODO doc string
-        # TODO remake to format
-        return self.name + ' ' + self.surname
+        """
+        Collector name and surname
+        :return: collector name and surname
+        """
+        full_name = self.name + ' ' + self.surname
+        return full_name
+        #return '{} {}'.format(self.name, self.surname)

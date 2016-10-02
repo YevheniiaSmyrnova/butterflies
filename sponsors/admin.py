@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Sponsors admin module
+'''
 from django.contrib import admin
 
 from sponsors.models import Sponsor
 
 
 class SponsorAdmin(admin.ModelAdmin):
-    # TODO doc string
+    '''
+    Sponsor admin
+    '''
     fieldsets = [
         (u'Основная информация',
          {'fields': ['user', 'date_of_birth', 'gender']}),
@@ -14,10 +18,6 @@ class SponsorAdmin(admin.ModelAdmin):
         (u'Описание', {'fields': ['description']}),
     ]
     list_display = ('user_full_name', 'gender', 'skype', 'description')
-
-
-# TODO don't keep unnecessary comments
-# list_filter = ['user_is_staff']
 
 
 admin.site.register(Sponsor, SponsorAdmin)

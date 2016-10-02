@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Collector admin module
+'''
 from django.contrib import admin
 
 from collector.models import Collector
@@ -7,13 +9,17 @@ from exhibition.models import Collection
 
 
 class CollectionInline(admin.TabularInline):
-    # TODO doc string
+    '''
+    Collection with have collector
+    '''
     model = Collection
     extra = 1
 
 
 class CollectorAdmin(admin.ModelAdmin):
-    # TODO doc string
+    '''
+    Collector admin
+    '''
     fieldsets = [
         (u'Основная информация',
          {'fields': ['name', 'surname', 'date_of_birth', 'photo']}),

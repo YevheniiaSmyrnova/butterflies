@@ -10,7 +10,8 @@
         <h1 align="center">{{ question.question_text }}</h1>
         <ul class="list-group">
           {% for choice in question.choice_set.all %}
-            <li class="list-group-item"><b>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</b></li>
+            <li class="list-group-item"><b>{{ choice.choice_text }} --
+              {{ choice.votes }} vote{{ choice.votes|pluralize }}</b></li>
           {% endfor %}
         </ul>
         <a href="{% url 'polls:index' %}">Голосовать еще раз?</a>

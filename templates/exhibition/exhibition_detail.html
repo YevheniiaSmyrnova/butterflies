@@ -17,15 +17,16 @@
           <ul class="list-group">
           {% for message in messages %}
             <p class="list-group-item list-group-item-success">
-            <span class="glyphicon glyphicon-send" aria-hidden="true"></span> {{ message }}</p>
+            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              {{ message }}</p>
           {% endfor %}
           </ul>
         {% endif %}
 
-        <p align="justify">Уважаемые жидели города Харькова и гости нашего города,
-        мы рады пригласить Вас на выставку "{{ exhibition.name }}", которая состоится 
-        {{ exhibition.date.day }}.{{ exhibition.date.month }}.{{ exhibition.date.year }}г. 
-        в стенах нашего заведения.</p>
+        <p align="justify">Уважаемые жидели города Харькова и гости нашего
+          города, мы рады пригласить Вас на выставку "{{ exhibition.name }}",
+          которая состоится {{ exhibition.date.day }}.{{ exhibition.date.month }}.{{ exhibition.date.year }}г.
+          в стенах нашего заведения.</p>
         
         <p align="justify">{{ exhibition.short_description }}</p>
 
@@ -50,22 +51,29 @@
 
 				{% if sponsors %}
         {% for sponsor in sponsors %}
-          <p>Спонсор: <a href="{% url 'sponsor:detail' sponsor.id %}">{{ sponsor.user_full_name }}</a></p>
+          <p>Спонсор: <a href="{% url 'sponsor:detail' sponsor.id %}">
+            {{ sponsor.user_full_name }}</a></p>
 				{% endfor %}
         {% endif %}
 				
         {% if assistants %}
         {% for assistant in assistants %}
-          <p>Ассистент: <a href="{% url 'sponsor:detail' assistant.id %}">{{ assistant.user_full_name }}</a></p>
+          <p>Ассистент: <a href="{% url 'sponsor:detail' assistant.id %}">
+            {{ assistant.user_full_name }}</a></p>
 				{% endfor %}
         {% endif %}
 
         <p align="center"><i>Будем рады видеть Вас на нашей выставке.</i></p>
 
-        <p align="right"><a class="btn btn-primary btn-sm" href="{% url 'exhibition:edit' exhibition.id %}" role="button">
-        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактировать</a>
-        <a class="btn btn-primary btn-sm" href="{% url 'exhibition:delete' exhibition.id %}" role="button">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Удалить</a></p>
+        <p align="right"><a class="btn btn-primary btn-sm"
+                            href="{% url 'exhibition:edit' exhibition.id %}"
+                            role="button">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          Редактировать</a>
+        <a class="btn btn-primary btn-sm"
+           href="{% url 'exhibition:delete' exhibition.id %}" role="button">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          Удалить</a></p>
       </div>
     </div>
 {% endblock content %}

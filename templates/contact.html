@@ -27,7 +27,8 @@
           <div class="media">
             <div class="media-left">
               <a href="{% static 'images/general_1.jpg' %}">
-                <img class="media-object" src="{% static 'images/general_1.jpg' %}" width="200" alt="...">
+                <img class="media-object" src="{% static 'images/general_1.jpg' %}"
+                     width="200" alt="...">
               </a>
               
             </div>
@@ -42,7 +43,9 @@
           </div>
         </div>
 
-        <p align="right"><a class="btn btn-primary btn-sm" href="{% url 'feedback:new_message' %}" role="button">
+        <p align="right"><a class="btn btn-primary btn-sm"
+                            href="{% url 'feedback:new_message' %}"
+                            role="button">
         <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Отправить сообщение администраторам</a></p>
         
       </div>

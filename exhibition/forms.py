@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Exhibiton forms module
+'''
 from django import forms
 
 from exhibition.models import Exhibition
 
 
 class ExhibitionModelForm(forms.ModelForm):
-    # TODO doc string
+    '''
+    Exhibition form
+    '''
     class Meta:
-        # TODO doc string
+        '''
+        Meta params
+        '''
         model = Exhibition

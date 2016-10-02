@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Polls views module
+'''
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -9,7 +11,9 @@ from polls.models import Choice, Question
 
 
 class IndexView(generic.ListView):
-    # TODO doc string
+    '''
+    List of question
+    '''
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
@@ -21,19 +25,28 @@ class IndexView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
-    # TODO doc string
+    '''
+    Detail about question
+    '''
     model = Question
     template_name = 'polls/detail.html'
 
 
 class ResultsView(generic.DetailView):
-    # TODO doc string
+    '''
+    Results of poll
+    '''
     model = Question
     template_name = 'polls/results.html'
 
 
 def vote(request, question_id):
-    # TODO doc string
+    '''
+    Count of votes
+    :param request:
+    :param question_id:
+    :return: count of votes or error message
+    '''
     p = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = p.choice_set.get(pk=request.POST['choice'])

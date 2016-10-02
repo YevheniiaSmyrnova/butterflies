@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Exhibition admin module
+'''
 from django.contrib import admin
 
 from exhibition.models import Collection, Exhibition
 
 
 class CollectionAdmin(admin.ModelAdmin):
-    # TODO doc string
+    '''
+    Collection admin
+    '''
     fieldsets = [
         (u'Основная информация', {'fields': ['name', 'collector']}),
         (u'Описание', {'fields': ['description'], 'classes': ['collapse']}),
@@ -17,7 +21,9 @@ class CollectionAdmin(admin.ModelAdmin):
 
 
 class ExhibitionAdmin(admin.ModelAdmin):
-    # TODO doc string
+    '''
+    Exhibition admin
+    '''
     fieldsets = [
         (u'Основная информация', {
             'fields': ['name', 'date', 'short_description', 'collection',

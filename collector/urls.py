@@ -1,4 +1,6 @@
-# TODO doc string
+'''
+Collector urls module
+'''
 from django.conf.urls import patterns, url
 
 from collector.views import CollectorListView, CollectorDetailView, \

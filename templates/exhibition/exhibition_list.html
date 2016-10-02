@@ -12,9 +12,11 @@
             <td width="20%" colspan="2">
               <ul class="nav nav-pills nav-stacked">
                 <li role="presentation" class="{{ now }}">
-                <a href="{% url 'exhibition:list' %}"><b>Расписание выставок</b></a></li>
+                <a href="{% url 'exhibition:list' %}"><b>Расписание выставок
+                </b></a></li>
                 <li role="presentation" class="{{ past }}">
-                <a href="{% url 'exhibition:list_past' %}"><b>Выставки, которые прошли</b></a></li>
+                <a href="{% url 'exhibition:list_past' %}"><b>Выставки,
+                  которые прошли</b></a></li>
               </ul>
             </td>
 
@@ -23,19 +25,24 @@
             <td width="75%">
               <h1><i><b>{{ title }}</b></i></h1>
               {% if now %}
-                <p align="right"><a class="btn btn-primary btn-sm" href="{% url 'exhibition:create' %}" role="button">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить новую выставку</a></p>
+                <p align="right"><a class="btn btn-primary btn-sm"
+                                    href="{% url 'exhibition:create' %}"
+                                    role="button">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  Добавить новую выставку</a></p>
                 {% if messages %}
                   <ul class="list-group">
                   {% for message in messages %}
-                    <p class="list-group-item list-group-item-success">{{ message }}</p>
+                    <p class="list-group-item list-group-item-success">
+                      {{ message }}</p>
                   {% endfor %}
                   </ul>
                 {% endif %}
               {% endif %}
               {% if exhibitions %}
                 {% for exhibition  in exhibitions %}
-                  <h3><i><b><a href="{% url 'exhibition:detail' exhibition.id %}">{{ exhibition.name }}</a></b></i></h3>
+                  <h3><i><b><a href="{% url 'exhibition:detail' exhibition.id %}">
+                    {{ exhibition.name }}</a></b></i></h3>
                   <p>{{ exhibition.date }}</p>
                   <p>{{ exhibition.short_description }}</p>
                   <hr>

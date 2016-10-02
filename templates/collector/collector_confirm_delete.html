@@ -13,13 +13,16 @@
         <h1 align="center"><i><b>Удаление данных коллекционера</b></i></h1>
 
         <p class="list-group-item list-group-item-warning" align="center">
-        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Коллекционер {{ collector.surname }} {{ collector.name }} будет удален! <span class="glyphicon glyphicon-alert" aria-hidden="true"></span></p>
+        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+          Коллекционер {{ collector.surname }} {{ collector.name }} будет удален!
+          <span class="glyphicon glyphicon-alert" aria-hidden="true"></span></p>
         <hr>
 
         <form method="post"  align="right">
           {% csrf_token %}
           <input class="btn btn-primary" type="submit" value="Удалить" />
-          <a class="btn btn-default" href="{% url 'collector:list' %}" role="button">Отменить</a>
+          <a class="btn btn-default" href="{% url 'collector:list' %}"
+             role="button">Отменить</a>
         </form>
         
       </div>

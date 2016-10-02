@@ -1,4 +1,6 @@
-# TODO doc string
+'''
+Exhibition urls module
+'''
 from django.conf.urls import patterns, url
 
 from exhibition.views import ExhibitionListView, ExhibitionPastListView, \

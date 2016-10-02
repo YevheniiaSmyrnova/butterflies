@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Polls urls module
+'''
 from django.conf.urls import patterns, url
 
 from polls import views

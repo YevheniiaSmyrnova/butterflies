@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-# TODO doc string
+'''
+Feedbacks admin module
+'''
 from django.contrib import admin
 
 from feedbacks.models import Feedback
 
 
 class FeedbackAdmin(admin.ModelAdmin):
-    # TODO doc string
+    '''
+    Feedback admin
+    '''
     fieldsets = [
         (u'Контакты', {'fields': ['name', 'from_email']}),
         (u'Сообщение', {'fields': ['subject', 'message']}),
