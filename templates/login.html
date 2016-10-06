@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}Вход{% endblock%}
+
+
+{% block nav_class_login %}active{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1><b><i>Добро пожаловать</i></b></h1>
+    {% if messages %}
+      <ul class="list-group">
+        {% for message in messages %}
+          <p class="list-group-item list-group-item-success">{{ message }}</p>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Войти</button>
+    </form>
+
+  </div>
+</div>
+{% endblock content %}

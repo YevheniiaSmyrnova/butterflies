@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}Регистрация{% endblock%}
+
+
+{% block nav_class_register %}active{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1><b><i>Добро пожаловать</i></b></h1>
+    <h3><b>Моментальная регистрация</b></h3>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+  </div>
+</div>
+{% endblock content %}

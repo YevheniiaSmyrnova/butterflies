@@ -22,7 +22,7 @@ class Collector(models.Model):
     def __unicode__(self):
         """
         Collector name and surname
-        :return: collector name and surname
+        :return: collector full name
         """
         full_name = self.name + ' ' + self.surname
         return full_name

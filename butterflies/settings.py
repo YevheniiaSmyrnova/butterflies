@@ -89,9 +89,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Login
+LOGIN_REDIRECT_URL = ''
+
+LOGIN_URL = '/login/'
 
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIA_URL = '/media/'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
