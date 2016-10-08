@@ -1,28 +1,19 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 Sponsops views module
-'''
-from django.shortcuts import render
+"""
+from django.views.generic.detail import DetailView
 
 from sponsors.models import Sponsor
 
-# TODO make class
-def list_of_sponsor(request):
-    '''
-    List of sponsor
-    :param request:
-    :return:
-    '''
-    sponsors = Sponsor.objects.all()
-    return render(request, 'sponsors/list.html', {'sponsors': sponsors})
+
+class SponsorDetailView(DetailView):
+    """
+    Detail about sponsor
+    """
+    model = Sponsor
 
 
-def detail(request, pk):
-    '''
-    Detain of sponsor
-    :param request:
-    :param pk:
-    :return:
-    '''
+'''def detail(request, pk):
     sponsor = Sponsor.objects.get(id=pk)
-    return render(request, 'sponsors/detail.html', {'sponsor': sponsor})
+    return render(request, 'sponsors/detail.html', {'sponsor': sponsor})'''

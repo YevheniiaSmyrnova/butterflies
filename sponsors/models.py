@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 Sponsors models module
-'''
+"""
 from django.contrib.auth.models import User
 from django.db import models
 
 
 class Sponsor(models.Model):
-    '''
+    """
     Sponsor model
-    '''
+    """
     user = models.OneToOneField(User, verbose_name=u'Пользователь')
     date_of_birth = models.DateField(u'День Рождения')
     gender = models.CharField(u'Пол',
@@ -21,15 +21,15 @@ class Sponsor(models.Model):
     description = models.TextField(u'Описание')
 
     def __unicode__(self):
-        '''
+        """
         Sponsor name
         :return: sponsor name
-        '''
+        """
         return self.user.get_username()
 
     def user_full_name(self):
-        '''
+        """
         Sponsor full name
         :return: sponsor full name
-        '''
+        """
         return self.user.get_full_name()
