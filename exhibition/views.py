@@ -118,7 +118,6 @@ class ExhibitionCreateView(CreateView):
         context['page_title'] = u'Создание новой выставки'
         return context
 
-    @login_required
     def form_valid(self, form):
         """
         The successful addition of new exhibition
@@ -154,7 +153,6 @@ class ExhibitionUpdateView(UpdateView):
         context['page_title'] = u'Редактирование данных о выставке'
         return context
 
-    @login_required
     def form_valid(self, form):
         """
         The successful edition of exhibition
@@ -174,7 +172,6 @@ class ExhibitionDeleteView(DeleteView):
     model = Exhibition
     success_url = reverse_lazy('index')
 
-    @login_required
     def delete(self, request, *args, **kwargs):
         """
         The successful deletion of exhibition

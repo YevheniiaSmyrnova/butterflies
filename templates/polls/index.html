@@ -11,9 +11,9 @@
         <h1 align="center"><b><i>Опрос мнения</i></b></h1>
    		  <ul class="list-group">
    		    {% for question in latest_question_list %}
-            <li class="list-group-item">
-                <a href="{% url 'polls:detail' question.id %}">
-                    <b>{{ question.question_text }}</b></a></li>
+            <a href="{% url 'polls:detail' question.id %}"
+               class="list-group-item">
+               <b>{{ question.question_text }}</b></a>
             {% endfor %}
           </ul>
         {% else %}
