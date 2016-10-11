@@ -25,11 +25,13 @@
             <td width="75%">
               <h1><i><b>{{ title }}</b></i></h1>
               {% if now %}
+                {% if request.user.is_authenticated %}
                 <p align="right"><a class="btn btn-primary btn-sm"
                                     href="{% url 'exhibition:create' %}"
                                     role="button">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                   Добавить новую выставку</a></p>
+              {% endif %}
                 {% if messages %}
                   <ul class="list-group">
                   {% for message in messages %}

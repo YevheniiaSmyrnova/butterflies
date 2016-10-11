@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 Exhibition admin module
-'''
+"""
 from django.contrib import admin
 
 from exhibition.models import Collection, Exhibition
 
 
 class CollectionAdmin(admin.ModelAdmin):
-    '''
+    """
     Collection admin
-    '''
+    """
     fieldsets = [
         (u'Основная информация', {'fields': ['name', 'collector']}),
         (u'Описание', {'fields': ['description'], 'classes': ['collapse']}),
@@ -21,9 +21,9 @@ class CollectionAdmin(admin.ModelAdmin):
 
 
 class ExhibitionAdmin(admin.ModelAdmin):
-    '''
+    """
     Exhibition admin
-    '''
+    """
     fieldsets = [
         (u'Основная информация', {
             'fields': ['name', 'date', 'short_description', 'collection',

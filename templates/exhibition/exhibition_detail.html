@@ -65,6 +65,7 @@
 
         <p align="center"><i>Будем рады видеть Вас на нашей выставке.</i></p>
 
+        {% if request.user.is_authenticated %}
         <p align="right"><a class="btn btn-primary btn-sm"
                             href="{% url 'exhibition:edit' exhibition.id %}"
                             role="button">
@@ -74,6 +75,7 @@
            href="{% url 'exhibition:delete' exhibition.id %}" role="button">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           Удалить</a></p>
+        {% endif %}
       </div>
     </div>
 {% endblock content %}

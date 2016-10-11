@@ -21,6 +21,7 @@
           </ul>
         {% endif %}
 
+        {% if request.user.is_authenticated %}
         <p align="right"><a class="btn btn-primary btn-sm"
                             href="{% url 'collector:edit' collector.id %}"
                             role="button">
@@ -28,6 +29,7 @@
         <a class="btn btn-primary btn-sm"
            href="{% url 'collector:delete' collector.id %}" role="button">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Удалить</a></p>
+        {% endif %}
 
         <div class="well well-large">
           <div class="media">
@@ -71,12 +73,13 @@
           {% endfor %}
         {% endif %}
 
+        {% if request.user.is_authenticated %}
         <p align="right"><a class="btn btn-primary btn-sm"
                             href="{% url 'collector:add_collection' collector.id %}"
                             role="button">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
           Добавить новую коллекцию</a></p>
-
+        {% endif %}
       </div>
     </div>
 {% endblock content %}

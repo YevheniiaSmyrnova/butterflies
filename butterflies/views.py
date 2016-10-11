@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 """
 Main views module
 """
-from django.contrib.auth import login
+from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic.edit import FormView
-from django.contrib.auth import logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import TemplateView
-from django.views.generic.base import View
 
 
 class IndexView(TemplateView):
@@ -38,52 +37,21 @@ class ContactView(TemplateView):
     template_name = 'contact.html'
 
 
-class RegisterFormView(FormView):
+class RegisterCreateView(CreateView):
     """
     User registration
     """
     form_class = UserCreationForm
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('index')
     template_name = "register.html"
 
     def form_valid(self, form):
         """
-        Save user if form is valid
+        The successful registration of new user
         :param form:
-        :return: base class method
+        :return: message
         """
-        form.save()
-        return super(RegisterFormView, self).form_valid(form)
-
-
-class LoginFormView(FormView):
-    """
-    User login
-    """
-    form_class = AuthenticationForm
-    template_name = "login.html"
-    success_url = reverse_lazy('index')
-
-    def form_valid(self, form):
-        """
-        User authentication
-        :param form:
-        :return: base class method
-        """
-        self.user = form.get_user()
-        login(self.request, self.user)
-        return super(LoginFormView, self).form_valid(form)
-
-
-class LogoutView(View):
-    """
-    User logout
-    """
-    def get(self, request):
-        """
-        User logout
-        :param request:
-        :return: main page
-        """
-        logout(request)
-        return reverse_lazy('index')
+        message = super(RegisterCreateView, self).form_valid(form)
+        mes = u'Вы успешно зарегистрировались.'
+        messages.success(self.request, mes)
+        return message

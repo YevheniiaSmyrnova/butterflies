@@ -5,15 +5,16 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.views import login, logout
 
 from butterflies.views import IndexView, FactsView, PoemsView, ContactView, \
-    RegisterFormView, LoginFormView, LogoutView
+    RegisterCreateView
 
 urlpatterns = patterns(
     '',
-    url(r'^register/$', RegisterFormView.as_view(), name='register'),
-    url(r'^login/$', LoginFormView.as_view(), name='login'),
-    url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    url(r'^register/$', RegisterCreateView.as_view(), name='register'),
+    url(r'^login/$', login, {"template_name": "login.html"}, name='login'),
+    url(r'^logout/$', logout, {"template_name": "logout.html"}, name='logout'),
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^facts/$', FactsView.as_view(), name='facts'),
     url(r'^poems/$', PoemsView.as_view(), name='poems'),

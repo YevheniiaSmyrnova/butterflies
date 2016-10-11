@@ -90,7 +90,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Login
-LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = '/'
 
 LOGIN_URL = '/login/'
 

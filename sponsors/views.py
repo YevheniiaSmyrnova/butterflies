@@ -12,8 +12,3 @@ class SponsorDetailView(DetailView):
     Detail about sponsor
     """
     model = Sponsor
-
-
-'''def detail(request, pk):
-    sponsor = Sponsor.objects.get(id=pk)
-    return render(request, 'sponsors/detail.html', {'sponsor': sponsor})'''

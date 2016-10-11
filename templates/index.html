@@ -12,6 +12,13 @@
 
 
 {% block content_text %}
+    {% if messages %}
+      <ul class="list-group">
+      {% for message in messages %}
+        <p class="list-group-item list-group-item-success">{{ message }}</p>
+      {% endfor %}
+      </ul>
+    {% endif %}
 	<h1 align="center"><i><b>Коллекционирование бабочек.</b></i></h1>
 	<p align="justify">Бабочки являются наиболее популярной группой насекомых
         для частных коллекционеров и научных работников. Это объясняется
@@ -24,8 +31,9 @@
         присутствовал застеклённый шкаф, где наряду с раковинами морских
         моллюсков, окаменелостями и минералами выставлялись и засушенные
         бабочки.</p>
-  <p><a class="btn btn-primary btn-lg"
+    <p><a class="btn btn-primary btn-lg"
         href="https://ru.wikipedia.org/wiki/Энтомологическая_коллекция"
         role="button">
-  <span class="glyphicon glyphicon-education" aria-hidden="true"></span> Узнать больше</a></p>
+    <span class="glyphicon glyphicon-education" aria-hidden="true">
+    </span> Узнать больше</a></p>
 {% endblock content_text %}

@@ -17,10 +17,12 @@
           </ul>
         {% endif %}
 
+        {% if request.user.is_authenticated %}
         <a class="btn btn-primary btn-sm" href="{% url 'collector:create' %}"
            role="button">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
           Добавить нового коллеционера</a>
+        {% endif %}
 
         <table class="table" border=0>
           <thead>
@@ -39,6 +41,7 @@
               <td><a href="{% url 'collector:detail' collector.id %}">
                 {{ collector.surname }} {{ collector.name }}</a></td>
               <td>{{ collector.phone }}</td>
+              {% if request.user.is_authenticated %}
               <th><a class="btn btn-primary btn-sm"
                      href="{% url 'collector:edit' collector.id %}"
                      role="button">
@@ -49,6 +52,7 @@
                      role="button">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 Удалить</a></th>
+              {% endif %}
             </tr>
           </tbody>
           {% endfor %}
@@ -59,7 +63,7 @@
           <li>
             {% if page_obj.has_previous %}
               <a href="?page={{ page_obj.previous_page_number }}">
-                <span aria-hidden="true"><< previous</span></a>
+                <span aria-hidden="true"><< Предыдущая</span></a>
             {% endif %}
          </li>
           {% for page_number in paginator.page_range %}
@@ -77,7 +81,7 @@
           <li>
             {% if page_obj.has_next %}
               <a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                <span aria-hidden="true">next >></span></a>
+                <span aria-hidden="true">Следующая >></span></a>
             {% endif %}
           </li>
         </ul>
