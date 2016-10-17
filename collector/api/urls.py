@@ -1,3 +1,6 @@
+"""
+Collector api urls module
+"""
 from django.conf.urls import patterns, url
 from collector.api.views import CollectorListCreateAPIView, \
     CollectorRetrieveUpdateDestroyAPIView
