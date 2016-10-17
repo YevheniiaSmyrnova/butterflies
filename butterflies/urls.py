@@ -8,8 +8,9 @@ from django.contrib import admin
 from django.contrib.auth.views import login, logout
 
 from collector.api import urls as collector_api_url
-from feedbacks.api import urls as feedback_api_url
 from exhibition.api import urls as exhibition_api_url
+from feedbacks.api import urls as feedback_api_url
+from polls.api import urls as poll_api_url
 from sponsors.api import urls as sponsors_api_url
 from butterflies.views import IndexView, FactsView, PoemsView, ContactView, \
     RegisterCreateView
@@ -25,7 +26,9 @@ urlpatterns = patterns(
                                       namespace="exhibition_api_url")),
     url(r'^api/feedback/', include(feedback_api_url,
                                    namespace="feedback_api_url")),
-    url(r'^api/', include(sponsors_api_url,namespace="sponsors_api_url")),
+    url(r'^api/polls/', include(poll_api_url,
+                                namespace="poll_api_url")),
+    url(r'^api/', include(sponsors_api_url, namespace="sponsors_api_url")),
     url(r'^register/$', RegisterCreateView.as_view(), name='register'),
     url(r'^login/$', login, {"template_name": "login.html"}, name='login'),
     url(r'^logout/$', logout, {"template_name": "logout.html"}, name='logout'),

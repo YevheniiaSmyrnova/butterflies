@@ -8,7 +8,7 @@ from collector.api.views import CollectorListCreateAPIView, \
 urlpatterns = patterns(
     '',
     url(r'^$', CollectorListCreateAPIView.as_view(),
-        name='collector_list'),
+        name='collectors_list'),
     url(r'^(?P<pk>\d+)/$',
         CollectorRetrieveUpdateDestroyAPIView.as_view(),
         name='collector_detail'),

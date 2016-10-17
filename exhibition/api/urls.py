@@ -9,12 +9,12 @@ from exhibition.api.views import ExhibitionListCreateAPIView, \
 urlpatterns = patterns(
     '',
     url(r'^$', ExhibitionListCreateAPIView.as_view(),
-        name='exhibition_list'),
+        name='exhibitions_list'),
     url(r'^(?P<pk>\d+)/$', ExhibitionRetrieveUpdateDestroyAPIView.as_view(),
         name='exhibition_detail'),
     url(r'^collections/$', CollectionListCreateAPIView.as_view(),
-        name='exhibition_list'),
+        name='collections_list'),
     url(r'^collections/(?P<pk>\d+)/$',
         CollectionRetrieveUpdateDestroyAPIView.as_view(),
-        name='exhibition_detail'),
+        name='collection_detail'),
 )
