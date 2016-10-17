@@ -24,6 +24,4 @@ class Collector(models.Model):
         Collector name and surname
         :return: collector full name
         """
-        full_name = self.name + ' ' + self.surname
-        return full_name
-        #return '{} {}'.format(self.name, self.surname)
+        return u"{} {}".format(self.name, self.surname)

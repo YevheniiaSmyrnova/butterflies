@@ -8,7 +8,6 @@ from collector.models import Collector
 from exhibition.models import Collection
 
 
-# Create your views here.
 class CollectorModelForm(forms.ModelForm):
     """
     Collector form
@@ -18,6 +17,7 @@ class CollectorModelForm(forms.ModelForm):
         Meta params
         """
         model = Collector
+        exclude = tuple()
 
 
 class CollectionModelForm(forms.ModelForm):
@@ -29,3 +29,4 @@ class CollectionModelForm(forms.ModelForm):
         Meta params
         """
         model = Collection
+        exclude = tuple()
