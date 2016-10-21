@@ -8,9 +8,9 @@ from exhibition.api.views import ExhibitionListCreateAPIView, \
 
 urlpatterns = patterns(
     '',
-    url(r'^$', ExhibitionListCreateAPIView.as_view(),
+    url(r'^exhibitions/$', ExhibitionListCreateAPIView.as_view(),
         name='exhibitions_list'),
-    url(r'^(?P<pk>\d+)/$', ExhibitionRetrieveUpdateDestroyAPIView.as_view(),
+    url(r'^exhibitions/(?P<pk>\d+)/$', ExhibitionRetrieveUpdateDestroyAPIView.as_view(),
         name='exhibition_detail'),
     url(r'^collections/$', CollectionListCreateAPIView.as_view(),
         name='collections_list'),

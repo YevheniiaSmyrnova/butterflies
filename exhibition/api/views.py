@@ -49,7 +49,7 @@ class CollectionListCreateAPIView(ListCreateAPIView):
     Collection List and Create.
     The request is authenticated as a user, or is a read-only request.
     """
-    queryset = Collection.objects.all()
+    # queryset = Collection.objects.all()
     serializer_class = CollectionSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
@@ -58,12 +58,17 @@ class CollectionListCreateAPIView(ListCreateAPIView):
         Optionally restricts the returned collections,
         by filtering against a `name` query parameter in the URL.
         """
-        queryset = super(CollectionListCreateAPIView, self).get_queryset()
-        # queryset = Collection.objects.all()
-        name = self.request.query_params.get('name', None)
-        print(name)
+        # queryset = super(CollectionListCreateAPIView, self).get_queryset()
+        queryset = Collection.objects.all()
+        name = self.request.query_params.get('name')
+        description = self.request.query_params.get('description')
+        filters = {}
         if name:
-            queryset = queryset.filter(name=name)
+            filters['name__icontains'] = name
+        if description:
+            filters['description__icontains'] = description
+        if filters:
+            queryset = queryset.filter(**filters)
         return queryset
 
 

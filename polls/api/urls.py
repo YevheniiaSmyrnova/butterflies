@@ -11,6 +11,6 @@ urlpatterns = patterns(
         name='questions_list'),
     url(r'^(?P<pk>\d+)/$', QuestionRetrieveUpdateDestroyAPIView.as_view(),
         name='question_detail'),
-    url(r'^(?P<pk>\d+)/choices$', ChoiceListCreateAPIView.as_view(),
+    url(r'^(?P<pk>\d+)/choices/$', ChoiceListCreateAPIView.as_view(),
         name='choices_list'),
 )
