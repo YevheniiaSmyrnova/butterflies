@@ -40,3 +40,16 @@ class CollectorRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
         instance = serializer.save()
         response = CollectorSerializer(instance=instance).data
         return Response(status=HTTP_200_OK, data=response)
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned collections,
+        by filtering against a `name` query parameter in the URL.
+        """
+        queryset = Collector.objects.all()
+        if self.request.user.is_activ():
+            surname = self.request.user.data.get('last_name')
+        print(surname)
+        if surname:
+            queryset = queryset.filter(surname=surname)
+        return queryset
