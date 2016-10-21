@@ -1,6 +1,7 @@
 """
 Exhibition api views module
 """
+from rest_framework import exceptions
 from rest_framework.generics import ListCreateAPIView, \
     RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -51,6 +52,19 @@ class CollectionListCreateAPIView(ListCreateAPIView):
     queryset = Collection.objects.all()
     serializer_class = CollectionSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned collections,
+        by filtering against a `name` query parameter in the URL.
+        """
+        queryset = super(CollectionListCreateAPIView, self).get_queryset()
+        # queryset = Collection.objects.all()
+        name = self.request.query_params.get('name', None)
+        print(name)
+        if name:
+            queryset = queryset.filter(name=name)
+        return queryset
 
 
 class CollectionRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
