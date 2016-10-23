@@ -8,8 +8,8 @@ from feedbacks.api.views import FeedbackListCreateAPIView, \
 
 urlpatterns = patterns(
     '',
-    url(r'^$', FeedbackListCreateAPIView.as_view(),
+    url(r'^feedback/$', FeedbackListCreateAPIView.as_view(),
         name='feedbacks_list'),
-    url(r'^(?P<pk>\d+)/$', FeedbackRetrieveUpdateDestroyAPIView.as_view(),
+    url(r'^feedback/(?P<pk>\d+)/$', FeedbackRetrieveUpdateDestroyAPIView.as_view(),
         name='feedback_detail'),
 )

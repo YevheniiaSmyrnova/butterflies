@@ -3,7 +3,8 @@ Collector api views module
 """
 from rest_framework.generics import ListCreateAPIView, \
     RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, \
+    IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK
 
@@ -28,7 +29,7 @@ class CollectorRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     """
     queryset = Collector.objects.all()
     serializer_class = CollectorSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # permission_classes = (IsAuthenticated,)
 
     def put(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -41,15 +42,13 @@ class CollectorRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
         response = CollectorSerializer(instance=instance).data
         return Response(status=HTTP_200_OK, data=response)
 
-    def get_queryset(self):
-        """
-        Optionally restricts the returned collections,
-        by filtering against a `name` query parameter in the URL.
-        """
-        queryset = Collector.objects.all()
-        if self.request.user.is_activ():
-            surname = self.request.user.data.get('last_name')
-        print(surname)
-        if surname:
-            queryset = queryset.filter(surname=surname)
-        return queryset
+    # def get_queryset(self):
+    #     """
+    #     Optionally restricts the returned collections,
+    #     by filtering against a `name` query parameter in the URL.
+    #     """
+    #     queryset = Collector.objects.all()
+    #     surname = self.request.user.last_name
+    #     if surname:
+    #         queryset = queryset.filter(surname=surname)
+    #     return queryset
