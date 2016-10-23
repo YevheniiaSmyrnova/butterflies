@@ -16,7 +16,7 @@ class Feedback(models.Model):
     message = models.TextField(u'Текст сообщения')
     from_email = models.EmailField(u'Email отправителя')
     create_date = models.DateField(u'Дата и время создания',
-                                   default=timezone.now().date())
+                                   auto_now_add=True)
 
     def __unicode__(self):
         """
