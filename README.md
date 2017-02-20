@@ -16,7 +16,7 @@ Note that the webpage language is Russian.
 # Installation
 
 ```
-virtualenv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+git clone https://github.com/YevheniiaSmyrnova/butterflies.git
+cd butterflies
+sudo docker-compose up
 ```

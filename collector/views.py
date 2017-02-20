@@ -40,10 +40,6 @@ class CollectorDetailView(DetailView):
         :return: context
         """
         context = super(CollectorDetailView, self).get_context_data(**kwargs)
-        logger.debug("Collectors detail view has been debugged")
-        logger.info("Logger of collectors detail view informs you!")
-        logger.warning("Logger of collectors detail view warns you!")
-        logger.error("Collectors detail view went wrong!")
         context['collections'] = Collection.objects.filter(
             collector__pk=self.object.pk)
         return context

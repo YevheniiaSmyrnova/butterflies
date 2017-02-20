@@ -18,3 +18,5 @@ simplegeneric==0.8.1
 six==1.10.0
 traitlets==4.3.0
 wcwidth==0.1.7
+invoke==0.15.0
+uWSGI==2.0.14
