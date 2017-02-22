@@ -18,5 +18,5 @@ Note that the webpage language is Russian.
 ```
 git clone https://github.com/YevheniiaSmyrnova/butterflies.git
 cd butterflies
-sudo docker-compose up
+docker-compose up
 ```
